@@ -1,10 +1,30 @@
--- https://leetcode.com/problems/article-views-i/?envType=study-plan-v2&envId=top-sql-50
+-- https://leetcode.com/problems/article-views-i/
 
--- Write your MySQL query statement below
+/*
+LeetCode 1148 — Article Views I
 
--- SELECT DISTINCT REMOVES DUPLICATES IN THE RESULT SET
+Table: Views
++------------+------+
+| article_id | int  |
+| author_id  | int  |
+| viewer_id  | int  |
+| view_date  | date |
++------------+------+
 
-SELECT DISTINCT author_id AS id 
+Find all authors that viewed at least one of their own articles.
+Return the result sorted by author_id.
+*/
+
+-- Example Table Creation (optional)
+CREATE TABLE IF NOT EXISTS Views (
+    article_id INT,
+    author_id INT,
+    viewer_id INT,
+    view_date DATE
+);
+
+-- ❗ Your SQL Solution Below
+SELECT DISTINCT author_id AS id
 FROM Views
 WHERE author_id = viewer_id
-ORDER BY id;
+ORDER BY author_id;

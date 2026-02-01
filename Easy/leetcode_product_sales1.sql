@@ -1,8 +1,43 @@
--- https://leetcode.com/problems/product-sales-analysis-i/description/?envType=study-plan-v2&envId=top-sql-50
+-- https://leetcode.com/problems/product-sales-analysis-i/
 
--- Write your MySQL query statement below
+/*
+LeetCode 1068 — Product Sales Analysis I
 
-SELECT Product.product_name, Sales.year, Sales.price
-FROM Sales
-JOIN Product
-ON Product.product_id = Sales.product_id;
+Tables:
+Sales
++------------+---------+
+| sale_id    | int     |
+| product_id | int     |
+| year       | int     |
+| quantity   | int     |
+| price      | int     |
++------------+---------+
+
+Product
++------------+---------+
+| product_id | int     |
+| product_name | varchar |
++------------+---------+
+
+Return the product name, year, and price for each sale.
+*/
+
+-- Example Table Creation (optional)
+CREATE TABLE IF NOT EXISTS Sales (
+    sale_id INT,
+    product_id INT,
+    year INT,
+    quantity INT,
+    price INT
+);
+
+CREATE TABLE IF NOT EXISTS Product (
+    product_id INT,
+    product_name VARCHAR(50)
+);
+
+-- ❗ Your SQL Solution Below
+SELECT p.product_name, s.year, s.price
+FROM Sales s
+JOIN Product p
+ON s.product_id = p.product_id;

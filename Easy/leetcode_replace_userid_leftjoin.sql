@@ -1,8 +1,36 @@
--- https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/?envType=study-plan-v2&envId=top-sql-50
+-- https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/
 
--- Write your MySQL query statement below
+/*
+LeetCode 1378 — Replace Employee ID With The Unique Identifier
 
-SELECT EmployeeUNI.unique_id, Employees.name
-FROM Employees
-LEFT JOIN EmployeeUNI
-ON Employees.id = EmployeeUNI.id;
+Tables:
+Employees
++----+------+
+| id | name |
++----+------+
+
+EmployeeUNI
++----+-----------+
+| id | unique_id |
++----+-----------+
+
+Show the unique ID of each user.
+If a user does not have a unique ID, show null.
+*/
+
+-- Example Table Creation (optional)
+CREATE TABLE IF NOT EXISTS Employees (
+    id INT,
+    name VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS EmployeeUNI (
+    id INT,
+    unique_id INT
+);
+
+-- ❗ Your SQL Solution Below
+SELECT eu.unique_id, e.name
+FROM Employees e
+LEFT JOIN EmployeeUNI eu
+ON e.id = eu.id;
